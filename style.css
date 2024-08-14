@@ -98,6 +98,82 @@ body{
 #scrollUp:hover{
 	background:#2C2D3F;
 }
+
+/* DARK THEME */
+.wrap-check-44 input[type="checkbox"] {
+    visibility: hidden;
+    display: none;
+  }
+
+  .wrap-check-44 *,
+  .wrap-check-44 ::after,
+  .wrap-check-44 ::before {
+    box-sizing: border-box;
+  }
+
+  /* The switch - the box around the slider */
+  .wrap-check-44 .switch {
+    font-size: 12px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+  }
+
+  /* Hide default HTML checkbox */
+  .wrap-check-44 .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .wrap-check-44 .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: 
+#fff;
+    border: 1px solid 
+#000000;
+    transition: .4s;
+    border-radius: 30px;
+  }
+
+  .wrap-check-44 .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 20px;
+    left: 0.27em;
+    bottom: 0.25em;
+    background-color: 
+#adb5bd;
+    transition: .4s;
+  }
+
+  .wrap-check-44 input:checked + .slider {
+    background-color: 
+#97a0a6;
+    border: 1px solid 
+#000000;
+  }
+
+  .wrap-check-44 input:focus + .slider {
+    box-shadow: 0 0 1px 
+#007bff;
+  }
+
+  .wrap-check-44 input:checked + .slider:before {
+    transform: translateX(1.4em);
+    background-color: 
+#fff;
+  }
+
 /* Color Plate */
 .color-plate {
 	position: fixed;
@@ -986,7 +1062,7 @@ body{
 	margin-left: -35px;
 	margin-top: -35px;
 	font-size: 21px;
-	background: #1a76d1;
+	background: #ABC9DE;
 	padding-left: 4px;
 }
 .why-choose .choose-right .video:hover{
@@ -1099,25 +1175,7 @@ body{
 	height:100%;
 	width:100%;
 }
-.portfolio .single-pf:before{
-	position:absolute;
-	content:"";
-	left:0;
-	top:0;
-	height:100%;
-	width:100%;
-	background:#1a76d1;
-	opacity:0;
-	visibility:hidden;
-	-webkit-transition:all 0.4s ease;
-	-moz-transition:all 0.4s ease;
-	transition:all 0.4s ease;
-	z-index:1;
-}
-.portfolio .single-pf:hover:before{
-	opacity:0.7;
-	visibility:visible;
-}
+
 .portfolio .single-pf .btn {
 	color: #1a76d1;
 	z-index: 3;
