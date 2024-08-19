@@ -960,7 +960,7 @@
         const formData = $(this).serialize();
 
         $.ajax({
-          url: "flask.py/submit_appointment", // Replace with your Flask endpoint URL
+          url: "/submit_appointment", // Replace with your Flask endpoint URL
           method: "POST",
           data: formData,
           success: function(response) {
