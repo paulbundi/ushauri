@@ -947,34 +947,5 @@
       appointmentSection.scrollIntoView({ behavior: 'smooth' });
     });
 	
-  </script>
-	// Add jQuery library (assuming you're using it)
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <script>
-    $(document).ready(function() {
-      $("#appointmentForm").submit(function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        // Serialize form data (consider using a library like `serializeObject` for more control)
-        const formData = $(this).serialize();
-
-        $.ajax({
-          url: "/submit_appointment", // Replace with your Flask endpoint URL
-          method: "POST",
-          data: formData,
-          success: function(response) {
-            // Handle successful submission (e.g., clear form, display confirmation message)
-            console.log("Appointment submitted successfully:", response);
-            $("#appointmentForm").trigger("reset"); // Reset form after submission
-          },
-          error: function(error) {
-            // Handle errors (e.g., display error message)
-            console.error("Error submitting appointment:", error);
-            alert("An error occurred while submitting the appointment. Please try again.");
-          }
-        });
-      });
-    });
-  </script>
+  
 </html>
