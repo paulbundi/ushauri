@@ -70,9 +70,8 @@
 						<div class="col-lg-6 col-md-5 col-12">
 							<!-- Contact -->
 							<ul class="top-link">
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-								<li><a href="#">FAQ</a></li>
+								<li><a href="#" id="minmenuabt">About</a></li>
+								<li><a href="#" id="minmenucntc">Contact</a></li>
 							</ul>
 							<!-- End Contact -->
 						</div>
@@ -125,10 +124,10 @@
 												
 											</li>
 											
-											<li><a href="">About Us</a></li>
-											<li><a href="">Services</a></li>
-											<li><a href="">Counsellor</a></li>
-											<li><a href="">Contact Us</a></li>
+											<li><a href="#" id="menuabt">About Us</a></li>
+											<li><a href="#" id="menusvcs">Services</a></li>
+											<li><a href="#" id="menucnsc">Counsellor</a></li>
+											<li><a href="#" id="menucntc">Contact Us</a></li>
 											<li><a>
 											<div class="wrap-check-44">
 											  <label class="switch">
@@ -169,7 +168,7 @@
 									<p>Struggling with anxiety, depression, or relationship issues? Our experienced therapists offer personalized counseling to help you overcome life's challenges and achieve your full potential.</p>
 									<div class="button">
 										<a href="#" class="btn" id="scroll1">Get Appointment</a>
-										<a href="#" class="btn primary">Learn More</a>
+										
 									</div>
 								</div>
 							</div>
@@ -184,8 +183,8 @@
 									<h1>We Provide <span>Couple</span> Counselling Services That Can <span>Strengthen</span> Your Bond!</h1>
 									<p>Is your relationship facing difficulties? Our skilled counselors specialize in helping couples improve communication, resolve conflicts, and rebuild trust.</p>
 									<div class="button">
-										<a href="#" class="btn" id="scroll1">Get Appointment</a>
-										<a href="#" class="btn primary">Learn More</a>
+										<a href="#" class="btn" id="scroll2">Get Appointment</a>
+										
 									</div>
 								</div>
 							</div>
@@ -200,8 +199,8 @@
 									<h1>We Provide <span>Youth</span> Counselling Services Tailored to Your <span>Needs!</span></h1>
 									<p>Navigating the challenges of adolescence can be tough. Our youth counselors provide a safe and supportive space for teens to explore their emotions and develop healthy coping skills.</p>
 									<div class="button">
-										<a href="#" class="btn" id="scroll1">Get Appointment</a>
-										<a href="#" class="btn primary">Learn More</a>
+										<a href="#" class="btn" id="scroll3">Get Appointment</a>
+										
 									</div>
 								</div>
 							</div>
@@ -216,8 +215,8 @@
 									<h1>We Provide <span>Stress Management</span> Techniques That Can <span>Transform</span> Your Life!</h1>
 									<p>Feeling overwhelmed by stress? Our experts offer effective strategies to help you manage stress, improve your overall well-being, and achieve a greater sense of balance.</p>
 									<div class="button">
-										<a href="#" class="btn" id="scroll1">Get Appointment</a>
-										<a href="#" class="btn primary">Learn More</a>
+										<a href="#" class="btn" id="scroll4">Get Appointment</a>
+										
 									</div>
 								</div>
 							</div>
@@ -232,8 +231,8 @@
 									<h1>We Provide <span>Grief Counselling</span> to Help You <span>Heal</span></h1>
 									<p>Experiencing the loss of a loved one is a difficult journey. Our compassionate counselors offer support and guidance to help you navigate the grieving process.</p>
 									<div class="button">
-										<a href="#" class="btn" id="scroll1">Get Appointment</a>
-										<a href="#" class="btn primary">Learn More</a>
+										<a href="#" class="btn" id="scroll5">Get Appointment</a>
+										
 									</div>
 								</div>
 							</div>
@@ -248,8 +247,8 @@
 									<h1>We Provide <span>Addiction</span> Recovery Services That Can <span>Empower</span> You!</h1>
 									<p>Struggling with addiction? Our specialized programs offer comprehensive support and evidence-based therapies to help you overcome dependencies and rebuild your life.</p>
 									<div class="button">
-										<a href="#" class="btn" id="scroll1">Get Appointment</a>
-										<a href="#" class="btn primary">Learn More</a>
+										<a href="#" class="btn" id="scroll6">Get Appointment</a>
+										
 									</div>
 								</div>
 							</div>
@@ -264,8 +263,8 @@
 									<h1>We Provide <span>Anxiety and Depression</span> Treatment That Can <span>Transform</span> Your Well-being!</h1>
 									<p>Feeling overwhelmed by anxiety or depression? Our compassionate therapists offer personalized care to help you manage symptoms, build resilience, and find lasting relief.</p>
 									<div class="button">
-										<a href="#" class="btn" id="scroll1">Get Appointment</a>
-										<a href="#" class="btn primary">Learn More</a>
+										<a href="#" class="btn" id="scroll7">Get Appointment</a>
+										
 									</div>
 								</div>
 							</div>
@@ -928,7 +927,12 @@
     const scrollToAppointment1 = document.getElementById('scroll1');
 	const scrollToAppointment2 = document.getElementById('scroll2');
 	const scrollToAppointment3 = document.getElementById('scroll3');
+	const scrollToAppointment5 = document.getElementById('scroll4');
+	const scrollToAppointment6 = document.getElementById('scroll5');
+	const scrollToAppointment7 = document.getElementById('scroll6');
+	const scrollToAppointment8 = document.getElementById('scroll7');
 	const scrollToAppointment4 = document.getElementById('appoin');
+		
     const appointmentSection = document.querySelector('.appointment');
 
     scrollToAppointment1.addEventListener('click', (event) => {
@@ -948,7 +952,61 @@
       appointmentSection.scrollIntoView({ behavior: 'smooth' });
     });
 		
+	scrollToAppointment4.addEventListener('click', (event) => {
+      event.preventDefault();
+      appointmentSection.scrollIntoView({ behavior: 'smooth' });
+    });
+		scrollToAppointment5.addEventListener('click', (event) => {
+      event.preventDefault();
+      appointmentSection.scrollIntoView({ behavior: 'smooth' });
+    });
+		scrollToAppointment6.addEventListener('click', (event) => {
+      event.preventDefault();
+      appointmentSection.scrollIntoView({ behavior: 'smooth' });
+    });
+		scrollToAppointment7.addEventListener('click', (event) => {
+      event.preventDefault();
+      appointmentSection.scrollIntoView({ behavior: 'smooth' });
+    });
+		scrollToAppointment8.addEventListener('click', (event) => {
+      event.preventDefault();
+      appointmentSection.scrollIntoView({ behavior: 'smooth' });
+    });
+		const scrollToaboutus = document.getElementById('menuabt');
+		const scrollToaboutus1 = document.getElementById('minmenuabt');
+		const aboutSection = document.querySelector('.why-choose section');
+		const scrollToservices= document.getElementById('menusvcs');
+		const servicesSection = document.querySelector('.services section');
+		const scrollTocounsillor = document.getElementById('menucnsc');
+		const counsillorSection = document.querySelector('.pricing-table section');
+		const scrollTocontactus = document.getElementById('menucntc');
+		const contactUsSection = document.querySelector('.contact-us section');
+		const scrollTocontactus1 = document.getElementById('minmenucntc');
 
+		scrollToaboutus.addEventListener('click', (event) => {
+      event.preventDefault();
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    });
+		scrollToaboutus1.addEventListener('click', (event) => {
+      event.preventDefault();
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    });
+		scrollToservices.addEventListener('click', (event) => {
+      event.preventDefault();
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    });
+		scrollTocounsillor.addEventListener('click', (event) => {
+      event.preventDefault();
+      counsillorSection.scrollIntoView({ behavior: 'smooth' });
+    });
+		scrollTocontactus.addEventListener('click', (event) => {
+      event.preventDefault();
+      contactUsSection.scrollIntoView({ behavior: 'smooth' });
+    });
+		scrollTocontactus1.addEventListener('click', (event) => {
+      event.preventDefault();
+      contactUsSection.scrollIntoView({ behavior: 'smooth' });
+    });
 	</script>
   
 </html>
