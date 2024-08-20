@@ -333,7 +333,7 @@ Version:	1.1
 })(jQuery);
 
 function prepareForForward() {
-  if (confirm('Are you sure you want to forward your appointment inquiry to Hellen Nchebere?')) {
+  if (confirm('Are you sure you want to forward your appointment inquiry to Ushauri Couselling and Mediation Center?')) {
     forwardToGmail();
   }
 }
@@ -360,7 +360,7 @@ function forwardToGmail() {
   const gmailLink = `mailto:hellennchebere@yahoo.com?subject=Inquiry&body=${encodedMessage}`;
 
   // Prompt user to open Gmail
-  if (confirm('Your appointment inquiry has been converted to an email. Click OK to open Gmail and forward it to Hellen Nchebere.')) {
+  if (confirm('Click OK to open Gmail and forward it to Hellen.')) {
     window.location.href = gmailLink;
   }
 }
