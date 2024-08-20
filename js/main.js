@@ -341,7 +341,12 @@ function prepareForForward() {
 function forwardToGmail() {
   const form = document.getElementById('bookAppointment');
   const formData = new FormData(form);
-
+  
+  // Check for gaps (replace this with your specific validation logic)
+  if (!validateForm(formData)) {
+    alert('Please fill out all required fields before forwarding.');
+    return; // Exit the function if there are gaps
+  }
   // Build the HTML message
   let message = '<h3>Appointment Inquiry</h3>';
   for (const [key, value] of formData.entries()) {
@@ -360,6 +365,19 @@ function forwardToGmail() {
   }
 }
 
+// Function to validate for gaps in the form (replace with your logic)
+function validateForm(formData) {
+  const requiredFields = ['name', 'email', 'phone', 'message']; // Replace with your actual required fields
+  
+  for (const field of requiredFields) {
+    if (!formData.has(field) || !formData.get(field).trim()) {
+      return false; // Gap found, return false
+    }
+  }
+  return true; // No gaps found, return true
+}
+
+
 function prepareForForward1() {
   if (confirm('Are you sure you want to contact us?')) {
     forwardToGmail1();
@@ -369,7 +387,12 @@ function prepareForForward1() {
 function forwardToGmail1() {
   const form = document.getElementById('contactUs');
   const formData = new FormData(form);
-
+  
+  // Check for gaps (replace this with your specific validation logic)
+  if (!validateForm1(formData)) {
+    alert('Please fill out all required fields before forwarding.');
+    return; // Exit the function if there are gaps
+  }
   // Build the HTML message
   let message = '<h3>Get In Contact</h3>';
   for (const [key, value] of formData.entries()) {
@@ -388,3 +411,14 @@ function forwardToGmail1() {
   }
 }
 
+// Function to validate for gaps in the form (replace with your logic)
+function validateForm1(formData) {
+  const requiredFields = ['name', 'email', 'phone', 'subject', 'message']; // Replace with your actual required fields
+  
+  for (const field of requiredFields) {
+    if (!formData.has(field) || !formData.get(field).trim()) {
+      return false; // Gap found, return false
+    }
+  }
+  return true; // No gaps found, return true
+}
