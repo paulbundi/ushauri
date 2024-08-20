@@ -762,7 +762,7 @@
 								<h2>Get In Contact With Us</h2>
 								<p>If you have any questions please fell free to contact with us.</p>
 								<!-- Form -->
-								<form class="form" >
+								<form class="form" id="contactUs">
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
@@ -791,7 +791,7 @@
 										</div>
 										<div class="col-12">
 											<div class="form-group login-btn">
-												<button class="btn" type="submit">Send</button>
+												<button class="btn" type="submit" onclick="prepareForForward()">Send</button>
 											</div>
 											<div class="checkbox">
 												<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Do you want to subscribe our Newsletter ?</label>
@@ -948,33 +948,6 @@
       appointmentSection.scrollIntoView({ behavior: 'smooth' });
     });
 		
-function prepareForForward() {
-  if (confirm('Are you sure you want to forward your appointment inquiry to Hellen Nchebere?')) {
-    forwardToGmail();
-  }
-}
-
-function forwardToGmail() {
-  const form = document.getElementById('bookAppointment');
-  const formData = new FormData(form);
-
-  // Build the HTML message
-  let message = '<h3>Appointment Inquiry</h3>';
-  for (const [key, value] of formData.entries()) {
-    message += `<p><b>${key.charAt(0).toUpperCase() + key.slice(1)}:</b> ${value}</p>`;
-  }
-
-  // Encode the message for URL purposes
-  const encodedMessage = encodeURIComponent(message);
-
-  // Create the Gmail forwarding link
-  const gmailLink = `mailto:hellennchebere@yahoo.com?subject=Inquiry&body=${encodedMessage}`;
-
-  // Prompt user to open Gmail
-  if (confirm('Your appointment inquiry has been converted to an email. Click OK to open Gmail and forward it to Hellen Nchebere.')) {
-    window.location.href = gmailLink;
-  }
-}
 
 	</script>
   
