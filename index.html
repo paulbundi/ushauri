@@ -656,7 +656,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-6 col-md-12 col-12">
-						<form class="form" action="{{ url_for('submit_appointment') }}" method="post">
+						<form class="form" id="bookAppointment">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
@@ -994,6 +994,45 @@ document.querySelector('.form').addEventListener('submit', (event) => {
   event.preventDefault();
   sendEmail();
 });
+
+	function sendAppointmentEmail(form) {
+  event.preventDefault(); // Prevent default form submission
+
+  const formData = new FormData(form);
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const phone = formData.get('phone');
+  const service = formData.get('service'); // Assuming value from "Counselling" dropdown
+  const counsellor = formData.get('counsellor'); // Assuming value from "Counsellor" dropdown
+  const date = formData.get('datepicker');
+  const message = formData.get('message');
+
+  const emailData = {
+    Host: "smtp.elasticemail.com",
+    Port: 2525,
+    Username: "YOUR_ELASTIC_EMAIL_USERNAME",
+    Password: "YOUR_ELASTIC_EMAIL_PASSWORD",
+    To: 'recipient@example.com', // Replace with recipient email address
+    From: email,
+    Subject: "Appointment Booking - " + name,
+    Body: `
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Service: ${service}
+      Counsellor: ${counsellor}
+      Date: ${date}
+      Message: ${message}
+    `,
+  };
+
+  Email.send(emailData)
+    .then((message) => alert("Appointment email sent successfully!"))
+    .catch((error) => alert("Error sending email: " + error));
+}
+
+const form = document.getElementById('bookAppointment');
+form.addEventListener('submit', (e) => sendAppointmentEmail(e.target));
 	</script>
   
 </html>
