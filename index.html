@@ -922,7 +922,7 @@
                 <i class="fa fa-whatsapp"></i>
             </a>
         </div>
-	
+	<script src="https://smtpjs.com/v3/smtp.js"></script>
 	<script>
     const scrollToAppointment1 = document.getElementById('scroll1');
 	const scrollToAppointment2 = document.getElementById('scroll2');
@@ -946,6 +946,54 @@
       event.preventDefault();
       appointmentSection.scrollIntoView({ behavior: 'smooth' });
     });
-	
+		
+
+function sendEmail() {
+  const form = document.querySelector('.form');
+  const formData = new FormData(form);
+
+  const name = formData.get('name');
+  const email = formData.get('email');   
+
+  const phone = formData.get('phone');   
+
+  const subject = formData.get('subject');
+  const message = formData.get('message');
+  const subscribe = formData.get('news');
+
+  // Replace with your ElasticEmail credentials
+  const apiKey = '438CEB4DE7DC6D10BD62E3E9CB95558A23CD9211138002A5E2D1442B62AE207A189D52C79B7387CD304554DE561A8F26';
+  const userName = 'ushauri';
+
+  Email.send({
+    Host: "smtp.elasticemail.com",
+    Username: paul,
+    Password: marangu47,
+    To: 'paul1bundi@gmail.com', // Replace with recipient email
+    From: 'paul1bundi@gmail.com', // Replace with your ElasticEmail verified email
+    Subject: subject,
+    Body: `
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Message: ${message}
+      Subscribe: ${subscribe ? 'Yes' : 'No'}
+    `
+  }).then(
+  message => {
+    // Handle success, e.g., display a success message
+    console.log(message);
+  })
+  .catch(error => {
+    // Handle errors, e.g., display an error message
+    console.error(error);
+  });
+}
+
+document.querySelector('.form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  sendEmail();
+});
+	</script>
   
 </html>
