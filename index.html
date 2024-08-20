@@ -983,8 +983,12 @@ function convertFormToEmail(form) {
 }
 
 
-const form = document.getElementById('bookAppointment');
-form.addEventListener('submit', (e) => convertFormToEmail(e.target));
+// Example usage (assuming you have a form with class="form")
+const form = document.querySelector('.form');
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent default form submission   
+
+  convertFormToEmail(form);
 });
 
 	</script>
