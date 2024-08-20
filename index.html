@@ -1031,16 +1031,8 @@ Email.send({
     SecureToken : "ee702d3c-2d81-42ad-a0d2-30ebc2fed562",
     To : 'paul1bundi@gmail.com',
     From : "paul1bundi@gmail.com",
-    Subject: "Appointment Booking - " + name,
-    Body: `
-      Name: ${name}
-      Email: ${email}
-      Phone: ${phone}
-      Service: ${service}
-      Counsellor: ${counsellor}
-      Date: ${date}
-      Message: ${message}
-    `,
+    Subject: "Appointment Booking - " ,
+    Body: 'body',
 })
 	.then(message => alert(message))
 	.catch((error) => alert("Error sending email: " + error));
