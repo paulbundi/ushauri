@@ -1027,13 +1027,29 @@ document.querySelector('.form').addEventListener('submit', (event) => {
     `,
   };
 
-  Email.send(emailData)
-    .then((message) => alert("Appointment email sent successfully!"))
-    .catch((error) => alert("Error sending email: " + error));
-}
+Email.send({
+    SecureToken : "ee702d3c-2d81-42ad-a0d2-30ebc2fed562",
+    To : 'paul1bundi@gmail.com',
+    From : "paul1bundi@gmail.com",
+    Subject: "Appointment Booking - " + name,
+    Body: `
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Service: ${service}
+      Counsellor: ${counsellor}
+      Date: ${date}
+      Message: ${message}
+    `,
+})
+	.then(message => alert(message))
+	.catch((error) => alert("Error sending email: " + error));
 
+  
 const form = document.getElementById('bookAppointment');
 form.addEventListener('submit', (e) => sendAppointmentEmail(e.target));
+
+
 	</script>
   
 </html>
