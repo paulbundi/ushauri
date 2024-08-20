@@ -332,4 +332,59 @@ Version:	1.1
 	
 })(jQuery);
 
+function prepareForForward() {
+  if (confirm('Are you sure you want to forward your appointment inquiry to Hellen Nchebere?')) {
+    forwardToGmail();
+  }
+}
+
+function forwardToGmail() {
+  const form = document.getElementById('bookAppointment');
+  const formData = new FormData(form);
+
+  // Build the HTML message
+  let message = '<h3>Appointment Inquiry</h3>';
+  for (const [key, value] of formData.entries()) {
+    message += `<p><b>${key.charAt(0).toUpperCase() + key.slice(1)}:</b> ${value}</p>`;
+  }
+
+  // Encode the message for URL purposes
+  const encodedMessage = encodeURIComponent(message);
+
+  // Create the Gmail forwarding link
+  const gmailLink = `mailto:hellennchebere@yahoo.com?subject=Inquiry&body=${encodedMessage}`;
+
+  // Prompt user to open Gmail
+  if (confirm('Your appointment inquiry has been converted to an email. Click OK to open Gmail and forward it to Hellen Nchebere.')) {
+    window.location.href = gmailLink;
+  }
+}
+
+function prepareForForward1() {
+  if (confirm('Are you sure you want to contact us?')) {
+    forwardToGmail1();
+  }
+}
+
+function forwardToGmail1() {
+  const form = document.getElementById('contactUs');
+  const formData = new FormData(form);
+
+  // Build the HTML message
+  let message = '<h3>Get In Contact</h3>';
+  for (const [key, value] of formData.entries()) {
+    message += `<p><b>${key.charAt(0).toUpperCase() + key.slice(1)}:</b> ${value}</p>`;
+  }
+
+  // Encode the message for URL purposes
+  const encodedMessage = encodeURIComponent(message);
+
+  // Create the Gmail forwarding link
+  const gmailLink = `mailto:hellennchebere@yahoo.com?subject=Contact&body=${encodedMessage}`;
+
+  // Prompt user to open Gmail
+  if (confirm('Click OK to open Gmail to get in contact with us')) {
+    window.location.href = gmailLink;
+  }
+}
 
