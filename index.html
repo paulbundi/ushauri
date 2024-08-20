@@ -714,7 +714,7 @@
 								<div class="col-lg-5 col-md-4 col-12">
 									<div class="form-group">
 										<div class="button">
-											<button type="submit" class="btn">Book An Appointment</button>
+											<button type="submit" class="btn" onclick="prepareForForward()">Book An Appointment</button>
 										</div>
 									</div>
 								</div>
@@ -948,48 +948,33 @@
       appointmentSection.scrollIntoView({ behavior: 'smooth' });
     });
 		
-
-function convertFormToEmail(form) {
-  // Get form elements
-  const nameInput = form.querySelector('input[name="name"]');
-  const emailInput = form.querySelector('input[name="email"]');
-  const phoneInput = form.querySelector('input[name="phone"]');
-  const counsellingSelect = form.querySelector('.nice-select[name="counselling"]');
-  const counsellorSelect = form.querySelector('.nice-select[name="counsellor"]');
-  const datepickerInput = form.querySelector('#datepicker');
-  const messageTextarea = form.querySelector('textarea[name="message"]');
-
-  // Build HTML message body
-  let messageBody = `<table>`;
-  messageBody += `<tr><th>Name:</th><td>${nameInput.value}</td></tr>`;
-  messageBody += `<tr><th>Email:</th><td>${emailInput.value}</td></tr>`;
-  messageBody += `<tr><th>Phone:</th><td>${phoneInput.value}</td></tr>`;
-  messageBody += `<tr><th>Counselling Type:</th><td>${counsellingSelect.textContent.trim()}</td></tr>`;
-  messageBody += `<tr><th>Counsellor:</th><td>${counsellorSelect.textContent.trim()}</td></tr>`;
-  messageBody += `<tr><th>Date:</th><td>${datepickerInput.value}</td></tr>`;
-  messageBody += `<tr><th>Message:</th><td>${messageTextarea.value}</td></tr>`;
-  messageBody += `</table>`;
-
-  // Build email subject
-  const subject = `Appointment Inquiry - ${nameInput.value}`;
-
-  // Build Gmail link with subject pre-filled
-  const gmailLink = `mailto:hellennchebere@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(messageBody)}`;
-
-  // Prompt user to open Gmail
-  if (confirm("Your inquiry has been converted to an email. Click OK to open Gmail and forward it to Hellen Nchebere.")) {
-    window.location.href = gmailLink;
+function prepareForForward() {
+  if (confirm('Are you sure you want to forward your appointment inquiry to Hellen Nchebere?')) {
+    forwardToGmail();
   }
 }
 
+function forwardToGmail() {
+  const form = document.getElementById('bookAppointment');
+  const formData = new FormData(form);
 
-// Example usage (assuming you have a form with class="form")
-const form = document.querySelector('.form');
-form.addEventListener('submit', (event) => {
-  event.preventDefault(); // Prevent default form submission   
+  // Build the HTML message
+  let message = '<h3>Appointment Inquiry</h3>';
+  for (const [key, value] of formData.entries()) {
+    message += `<p><b>${key.charAt(0).toUpperCase() + key.slice(1)}:</b> ${value}</p>`;
+  }
 
-  convertFormToEmail(form);
-});
+  // Encode the message for URL purposes
+  const encodedMessage = encodeURIComponent(message);
+
+  // Create the Gmail forwarding link
+  const gmailLink = `mailto:hellennchebere@yahoo.com?subject=Inquiry&body=${encodedMessage}`;
+
+  // Prompt user to open Gmail
+  if (confirm('Your appointment inquiry has been converted to an email. Click OK to open Gmail and forward it to Hellen Nchebere.')) {
+    window.location.href = gmailLink;
+  }
+}
 
 	</script>
   
