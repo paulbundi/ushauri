@@ -656,7 +656,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-6 col-md-12 col-12">
-						<form class="form" onsubmit="sendAppointmentEmail(); reset(); return False;">
+						<form class="form" id="bookAppointment">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
@@ -949,96 +949,43 @@
     });
 		
 
-function sendEmail() {
-  const form = document.querySelector('.form');
-  const formData = new FormData(form);
+function convertFormToEmail(form) {
+  // Get form elements
+  const nameInput = form.querySelector('input[name="name"]');
+  const emailInput = form.querySelector('input[name="email"]');
+  const phoneInput = form.querySelector('input[name="phone"]');
+  const counsellingSelect = form.querySelector('.nice-select[name="counselling"]');
+  const counsellorSelect = form.querySelector('.nice-select[name="counsellor"]');
+  const datepickerInput = form.querySelector('#datepicker');
+  const messageTextarea = form.querySelector('textarea[name="message"]');
 
-  const name = formData.get('name');
-  const email = formData.get('email');   
+  // Build HTML message body
+  let messageBody = `<table>`;
+  messageBody += `<tr><th>Name:</th><td>${nameInput.value}</td></tr>`;
+  messageBody += `<tr><th>Email:</th><td>${emailInput.value}</td></tr>`;
+  messageBody += `<tr><th>Phone:</th><td>${phoneInput.value}</td></tr>`;
+  messageBody += `<tr><th>Counselling Type:</th><td>${counsellingSelect.textContent.trim()}</td></tr>`;
+  messageBody += `<tr><th>Counsellor:</th><td>${counsellorSelect.textContent.trim()}</td></tr>`;
+  messageBody += `<tr><th>Date:</th><td>${datepickerInput.value}</td></tr>`;
+  messageBody += `<tr><th>Message:</th><td>${messageTextarea.value}</td></tr>`;
+  messageBody += `</table>`;
 
-  const phone = formData.get('phone');   
+  // Build email subject
+  const subject = `Appointment Inquiry - ${nameInput.value}`;
 
-  const subject = formData.get('subject');
-  const message = formData.get('message');
-  const subscribe = formData.get('news');
+  // Build Gmail link with subject pre-filled
+  const gmailLink = `mailto:hellennchebere@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(messageBody)}`;
 
-  // Replace with your ElasticEmail credentials
-  const apiKey = '438CEB4DE7DC6D10BD62E3E9CB95558A23CD9211138002A5E2D1442B62AE207A189D52C79B7387CD304554DE561A8F26';
-  const userName = 'ushauri';
-
-  Email.send({
-    Host: "smtp.elasticemail.com",
-    Username: paul1bundi@gmail.com,
-    Password: 2E2F03BF743C7FE8E1328BD35FBA5C250C34,
-    To: 'paul1bundi@gmail.com', // Replace with recipient email
-    From: 'paul1bundi@gmail.com', // Replace with your ElasticEmail verified email
-    Subject: subject,
-    Body: `
-      Name: ${name}
-      Email: ${email}
-      Phone: ${phone}
-      Message: ${message}
-      Subscribe: ${subscribe ? 'Yes' : 'No'}
-    `
-  }).then(
-  message => {
-    // Handle success, e.g., display a success message
-    console.log(message);
-  })
-  .catch(error => {
-    // Handle errors, e.g., display an error message
-    console.error(error);
-  });
+  // Prompt user to open Gmail
+  if (confirm("Your inquiry has been converted to an email. Click OK to open Gmail and forward it to Hellen Nchebere.")) {
+    window.location.href = gmailLink;
+  }
 }
 
-document.querySelector('.form').addEventListener('submit', (event) => {
-  event.preventDefault();
-  sendEmail();
+
+const form = document.getElementById('bookAppointment');
+form.addEventListener('submit', (e) => convertFormToEmail(e.target));
 });
-
-	function sendAppointmentEmail() {
-  event.preventDefault(); // Prevent default form submission
-
-  const formData = new FormData(form);
-  const name = formData.get('name');
-  const email = formData.get('email');
-  const phone = formData.get('phone');
-  const service = formData.get('service'); // Assuming value from "Counselling" dropdown
-  const counsellor = formData.get('counsellor'); // Assuming value from "Counsellor" dropdown
-  const date = formData.get('datepicker');
-  const message = formData.get('message');
-
-  const emailData = {
-    Host: "smtp.elasticemail.com",
-    Port: 2525,
-    Username: "paul1bundi@gmail.com",
-    Password: "2E2F03BF743C7FE8E1328BD35FBA5C250C34",
-    To: 'paul1bundi@gmail.com', // Replace with recipient email address
-    From: email,
-    Subject: "Appointment Booking - " + name,
-    Body: `
-      Name: ${name}
-      Email: ${email}
-      Phone: ${phone}
-      Service: ${service}
-      Counsellor: ${counsellor}
-      Date: ${date}
-      Message: ${message}
-    `,
-  };
-
-Email.send({
-    SecureToken : "ee702d3c-2d81-42ad-a0d2-30ebc2fed562",
-    To : 'paul1bundi@gmail.com',
-    From : "paul1bundi@gmail.com",
-    Subject: "Appointment Booking - " ,
-    Body: 'body',
-})
-	.then(message => alert(message))
-	.catch((error) => alert("Error sending email: " + error));
-
-  
-
 
 	</script>
   
