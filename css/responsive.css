@@ -471,7 +471,7 @@ Version:	1.1
 	font-weight:400;
 }
 .slicknav_menu .slicknav_icon-bar {
-	background-color: #1A76D1;
+	background-color: #48b58a;
 	box-shadow: none;
 	text-shadow: none;
 }
@@ -479,7 +479,7 @@ Version:	1.1
 	color:#2C2D3F;
 }
 .slicknav_nav li:hover .slicknav_arrow{
-	color:#1A76D1;
+	color:#48b58a;
 }
 .slicknav_menu .slicknav_icon-bar {
 	display: block;
